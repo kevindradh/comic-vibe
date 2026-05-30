@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: 'Baloo 2', system-ui, sans-serif;
+  --font-body: 'Comic Neue', cursive, sans-serif;
+  
+  --color-neubrutalism-bg: #FFE873;
+  --color-neubrutalism-primary: #FF5A5F;
+  --color-neubrutalism-secondary: #08C2A8;
+  --color-neubrutalism-black: #1E2019;
+  
+  --shadow-neubrutalism: 4px 4px 0px 0px rgba(30, 32, 25, 1);
+  --shadow-neubrutalism-hover: 2px 2px 0px 0px rgba(30, 32, 25, 1);
+  --shadow-neubrutalism-focus: 6px 6px 0px 0px rgba(30, 32, 25, 1);
+  
+  --animate-marquee: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-neubrutalism-bg);
+  background-image: radial-gradient(circle, #1e2019 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--color-neubrutalism-black);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Custom utilities for neubrutalism */
+@utility neu-border {
+  border: 3px solid var(--color-neubrutalism-black);
+}
+
+@utility neu-shadow {
+  box-shadow: var(--shadow-neubrutalism);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+@utility neu-shadow-interactive {
+  box-shadow: var(--shadow-neubrutalism);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  
+  &:hover {
+    transform: translate(2px, 2px);
+    box-shadow: var(--shadow-neubrutalism-hover);
+  }
+  
+  &:active:not(:disabled) {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+  }
+  
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
